@@ -1,70 +1,3 @@
-# import requests
-# from bs4 import BeautifulSoup
-#
-# url = 'https://www.classcentral.com/'
-#
-# # Send an HTTP request to the URL and get the page content
-# response = requests.get(url)
-# html_content = response.content
-#
-#
-# # Use BeautifulSoup to parse the HTML content
-# soup = BeautifulSoup(html_content, 'html.parser')
-#
-# # Find all the course cards on the homepage
-# course_cards = soup.find_all('div', {'class': 'text-left w-3/4'})
-# print(course_cards)
-#
-# for course_card in course_cards:
-#     # Extract the course name and description
-#     course_name = course_card.h3.text.strip()
-#     course_desc = course_card.p.text.strip()
-#
-#     # Extract the provider name and logo
-#     provider_name = course_card.find('span', {'class': 'text-sm text-gray-600'}).text.strip()
-#     provider_logo = course_card.find('img')['src']
-#
-#     # Extract the course rating and review count
-#     rating_element = course_card.find('div', {'class': 'text-base font-medium text-yellow-400'})
-#     if rating_element:
-#         course_rating = rating_element.text.strip()
-#         review_count = rating_element.find_next_sibling('div').text.strip()
-#     else:
-#         course_rating = ''
-#         review_count = ''
-#
-#     # Extract the course start date and duration
-#     start_date_element = course_card.find('div', {'class': 'text-sm text-gray-500'})
-#     if start_date_element:
-#         course_start_date = start_date_element.find('div', {'class': 'text-sm text-gray-600'}).text.strip()
-#         course_duration = start_date_element.find('div', {'class': 'text-sm text-gray-500'}).text.strip()
-#     else:
-#         course_start_date = ''
-#         course_duration = ''
-#
-#     # Extract the course categories and subcategories
-#     category_elements = course_card.find_all('div', {'class': 'text-sm text-gray-500 mt-1'})
-#     course_categories = [elem.text.strip() for elem in category_elements]
-#
-#     # Extract the links to the course page and provider page
-#     course_link = course_card.find('a')['href']
-#     provider_link = course_card.find('div', {'class': 'w-1/4'}).find('a')['href']
-#
-#     # Print the extracted data
-#     print('Course Name:', course_name)
-#     print('Course Description:', course_desc)
-#     print('Provider Name:', provider_name)
-#     print('Provider Logo:', provider_logo)
-#     print('Course Rating:', course_rating)
-#     print('Review Count:', review_count)
-#     print('Course Start Date:', course_start_date)
-#     print('Course Duration:', course_duration)
-#     print('Course Categories:', course_categories)
-#     print('Course Link:', course_link)
-#     print('Provider Link:', provider_link)
-#     print('----------------------------------------------')
-
-
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -89,7 +22,6 @@ try:
 except TimeoutException:
     print('Blocking popup ad was not found in 60 seconds.')
 
-# Keep clicking show more courses until all courses are listed
 while 1:
     try:
         element = WebDriverWait(driver, 10).until(
